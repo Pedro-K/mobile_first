@@ -1,0 +1,172 @@
+@font-face {
+    font-family: "Epilogue";
+    src: url(./assets/fonts/Epilogue-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Epilogue-b";
+    src: url(./assets/fonts/Epilogue-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Epilogue-eb";
+    src: url(./assets/fonts/Epilogue-ExtraBold.ttf);
+}
+
+:root{
+    --ff-heading: "Epilogue-eb", sans-serif;
+    --ff-texting: "Epilogue", sans-serif;
+    --hue: 250;
+    --bg-primary: hsl(var(--hue), 22%, 20%);
+    --fc-primary: hsl(var(--hue), 0%, 100%);
+    --fc-secondary: hsl(var(--hue), 50%, 80%);
+    --fc-secondary-dark: hsl(var(--hue), 100%, 11%);
+    font-size: 62.5%;
+    --fs-body: 1.6rem;
+    --fs-heading: clamp(4rem, 1rem + 5vw, 5.6rem);
+    --fs-heading-sm: clamp(3rem, 0.5rem + 3vw, 4rem);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: var(--ff-texting);
+    font-size: var(--fs-body);
+    background: var(--bg-primary);
+    color: var(--fc-primary);
+}
+
+div.container{
+    max-width: clamp(33rem, 30rem + 60vw, 117rem);
+    margin: 0 auto;
+    padding: 0 5rem;
+}
+
+div.container header{
+    margin: 10rem 0 8rem;
+    font-family: var(--ff-heading);
+    text-align: center;
+    animation: topDown .7s .3s backwards;
+}
+
+div.container header p{
+    color: var(--fc-secondary);
+    text-transform: uppercase;
+    font-family: var(--ff-texting);
+    line-height: 3.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 1.7rem;
+}
+
+div.container header h1{
+    font-size: var(--fs-heading);
+    line-height: 4.8rem;
+}
+
+div.container main{
+    display: grid;
+    gap: 3.2rem;
+    animation: downTop .7s .5s backwards;
+    margin-bottom: 10rem;
+}
+
+div.container main div.card{
+    position: relative;
+}
+
+div.container main div.card img{
+    width: 100%;
+    height: 41.6rem;
+    object-fit: cover;
+    border-radius: 1.4rem;
+    transition: all 200ms;
+}
+
+div.container main div.card img:hover{
+    transform: scale(1.1);
+    filter: brightness(0.5);
+}
+
+div.container main div.card h2{
+    position: absolute;
+    bottom: 5.2rem;
+    left: 2.8rem;
+    font-family: var(--ff-heading);
+    font-size: var(--fs-heading-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+}
+div.container main div.card h2 span{
+    background-color: var(--fc-primary);
+    border-radius: 2rem;
+    font-family: var(--ff-texting);
+    font-size: var(--fs-body);
+    color: var(--fc-secondary-dark);
+    line-height: 3.2rem;
+    padding: 0 1.6rem;
+    height: 3.8rem;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+}
+
+/***********************************************/
+@keyframes topDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes downTop {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/***********************************************/
+@media (min-width:700px) {
+    div.container{
+        padding: 0 5rem;
+    }
+
+    div.container main{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width:957px) {
+    div.container main {
+        grid-template-areas: "A B B"
+                             "C C D";
+    }
+
+    div.container main div.card:nth-child(1){
+        grid-area: A;
+    }
+    div.container main div.card:nth-child(2){
+        grid-area: B;
+    }
+    div.container main div.card:nth-child(3){
+        grid-area: C;
+    }
+    div.container main div.card:nth-child(4){
+        grid-area: D;
+    }
+}
